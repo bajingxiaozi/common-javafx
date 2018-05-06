@@ -24,7 +24,12 @@ dependencies {
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: "file://out")
+            final File currentDirectory = new File("fakefile").getAbsoluteFile().getParentFile();
+            println("current directory: " + currentDirectory);
+            final File mavenDirectory = new File(currentDirectory.getParentFile(), "maven-repo");
+            println("maven directory: " + mavenDirectory)
+
+            repository(url: "file://" + mavenDirectory)
             pom.version = "$project.version"
             pom.artifactId = "$artifactId"
             pom.groupId = "$project.group"
