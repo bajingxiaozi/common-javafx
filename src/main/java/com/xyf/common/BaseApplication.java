@@ -11,18 +11,18 @@ public abstract class BaseApplication extends Application {
     @Override
     public void init() throws Exception {
         super.init();
-        Lg.i(TAG, this);
+        Lg.d(TAG, this);
     }
 
     @Override
     public void stop() throws Exception {
         super.stop();
-        Lg.i(TAG, this);
+        Lg.d(TAG, this);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Lg.i(TAG, this);
+        Lg.d(TAG, this);
     }
 
 }
