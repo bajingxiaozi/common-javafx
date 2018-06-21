@@ -1,6 +1,5 @@
 group = 'com.github.bajingxiaozi'
-//version = '1.0-SNAPSHOT'
-version = '1.0.1'
+version = '1.0-SNAPSHOT'
 def artifactId = "common-javafx"
 
 apply plugin: 'java'
