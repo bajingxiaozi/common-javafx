@@ -43,7 +43,7 @@ public class ViewUtils {
     }
 
     @Nullable
-    public static File openFile(@Nonnull String title, @Nonnull String extensionsDescription, @Nonnull String tag, @Nonnull String... extensions) {
+    public static File openFile(@Nonnull String title, @Nonnull String tag, @Nonnull String extensionsDescription, @Nonnull String... extensions) {
         final String KEY_LAST_OPEN_DIRECTORY = "last_open_file_directory_" + tag;
         final FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(title);
@@ -63,7 +63,7 @@ public class ViewUtils {
     }
 
     @Nullable
-    public static File saveFile(@Nonnull String title, @Nonnull String extensionsDescription, @Nonnull String tag, @Nonnull String... extensions) {
+    public static File saveFile(@Nonnull String title, @Nonnull String tag, @Nonnull String extensionsDescription, @Nonnull String... extensions) {
         final String KEY_LAST_SAVE_DIRECTORY = "last_save_file_directory_" + tag;
         final String KEY_LAST_SAVE_NAME = "last_save_file_name_" + tag;
         FileChooser fileChooser = new FileChooser();
