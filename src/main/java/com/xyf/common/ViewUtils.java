@@ -23,9 +23,9 @@ public class ViewUtils {
     }
 
     @Nullable
-    public static File openDirectory(@Nonnull String title) {
+    public static File openDirectory(@Nonnull String title, @Nonnull String tag) {
         final DirectoryChooser directoryChooser = new DirectoryChooser();
-        final String KEY_LAST_OPEN_DIRECTORY = "last_open_directory";
+        final String KEY_LAST_OPEN_DIRECTORY = "last_open_directory_" + tag;
         directoryChooser.setTitle(title);
         final String record = sp.get(KEY_LAST_OPEN_DIRECTORY);
         if (record != null) {
@@ -43,8 +43,8 @@ public class ViewUtils {
     }
 
     @Nullable
-    public static File openFile(@Nonnull String title, @Nonnull String extensionsDescription, @Nonnull String... extensions) {
-        final String KEY_LAST_OPEN_DIRECTORY = "last_open_file_directory";
+    public static File openFile(@Nonnull String title, @Nonnull String extensionsDescription, @Nonnull String tag, @Nonnull String... extensions) {
+        final String KEY_LAST_OPEN_DIRECTORY = "last_open_file_directory_" + tag;
         final FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(title);
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(extensionsDescription, extensions));
@@ -63,19 +63,9 @@ public class ViewUtils {
     }
 
     @Nullable
-    public static File openImageFile(@Nonnull String title) {
-        return openFile(title, "图片文件( *.png)( *.jpg)", "*.jpg", "*.png");
-    }
-
-    @Nullable
-    public static File openPngFile(@Nonnull String title) {
-        return openFile(title, "图片文件( *.png)", "*.png");
-    }
-
-    @Nullable
-    public static File saveFile(@Nonnull String title, @Nonnull String extensionsDescription, @Nonnull String... extensions) {
-        final String KEY_LAST_SAVE_DIRECTORY = "last_save_file_directory";
-        final String KEY_LAST_SAVE_NAME = "last_save_file_name";
+    public static File saveFile(@Nonnull String title, @Nonnull String extensionsDescription, @Nonnull String tag, @Nonnull String... extensions) {
+        final String KEY_LAST_SAVE_DIRECTORY = "last_save_file_directory_" + tag;
+        final String KEY_LAST_SAVE_NAME = "last_save_file_name_" + tag;
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(title);
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(extensionsDescription, extensions));
