@@ -15,7 +15,7 @@ public class R {
         return R.class.getClassLoader().getResource("layout/" + name);
     }
 
-    private static InputStream getDrawable(@Nonnull String name) {
+    public static InputStream getDrawable(@Nonnull String name) {
         return R.class.getClassLoader().getResourceAsStream("drawable/" + name);
     }
 
