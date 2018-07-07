@@ -1,4 +1,4 @@
-package com.xyf.common;
+package com.xyf.commonfx;
 
 import javafx.scene.image.Image;
 

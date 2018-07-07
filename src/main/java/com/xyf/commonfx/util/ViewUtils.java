@@ -1,4 +1,4 @@
-package com.xyf.common;
+package com.xyf.commonfx.util;
 
 import com.xyf.common.util.FileUtils2;
 import com.xyf.common.util.Sp;

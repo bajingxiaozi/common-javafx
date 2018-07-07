@@ -1,4 +1,4 @@
-package com.xyf.common;
+package com.xyf.commonfx;
 
 import com.xyf.common.util.Lg;
 import javafx.application.Application;
