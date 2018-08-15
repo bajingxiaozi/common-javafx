@@ -23,9 +23,9 @@ public class ViewUtils {
     }
 
     @Nullable
-    public static File openDirectory(@Nonnull String title) {
+    public static File openDirectory(@Nonnull String saveKey, @Nonnull String title) {
         final DirectoryChooser directoryChooser = new DirectoryChooser();
-        final String KEY_LAST_OPEN_DIRECTORY = "last_open_directory_" + title;
+        final String KEY_LAST_OPEN_DIRECTORY = "last_open_directory_" + saveKey;
         directoryChooser.setTitle(title);
         final String record = sp.get(KEY_LAST_OPEN_DIRECTORY);
         if (record != null) {
@@ -43,8 +43,8 @@ public class ViewUtils {
     }
 
     @Nullable
-    public static File openFile(@Nonnull String title, @Nonnull String extensionsDescription, @Nonnull String... extensions) {
-        final String KEY_LAST_OPEN_DIRECTORY = "last_open_file_directory_" + title;
+    public static File openFile(@Nonnull String saveKey, @Nonnull String title, @Nonnull String extensionsDescription, @Nonnull String... extensions) {
+        final String KEY_LAST_OPEN_DIRECTORY = "last_open_file_directory_" + saveKey;
         final FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(title);
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(extensionsDescription, extensions));
@@ -63,9 +63,9 @@ public class ViewUtils {
     }
 
     @Nullable
-    public static File saveFile(@Nonnull String title, @Nonnull String extensionsDescription, @Nonnull String... extensions) {
-        final String KEY_LAST_SAVE_DIRECTORY = "last_save_file_directory_" + title;
-        final String KEY_LAST_SAVE_NAME = "last_save_file_name_" + title;
+    public static File saveFile(@Nonnull String saveKey, @Nonnull String title, @Nonnull String extensionsDescription, @Nonnull String... extensions) {
+        final String KEY_LAST_SAVE_DIRECTORY = "last_save_file_directory_" + saveKey;
+        final String KEY_LAST_SAVE_NAME = "last_save_file_name_" + saveKey;
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(title);
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(extensionsDescription, extensions));
