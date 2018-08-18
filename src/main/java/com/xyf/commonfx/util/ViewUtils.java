@@ -5,11 +5,16 @@ import com.xyf.common.annotation.UiThread;
 import com.xyf.common.util.FileUtils2;
 import com.xyf.common.util.Lg;
 import com.xyf.common.util.Sp;
+import com.xyf.commonfx.R;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
 import io.reactivex.schedulers.Schedulers;
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -21,6 +26,7 @@ import org.apache.commons.lang3.StringUtils;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -146,6 +152,28 @@ public class ViewUtils {
             SP.set(saveKey, s);
             return s;
         });
+    }
+
+    @UiThread
+    public static void showDialog(@Nonnull String title, @Nonnull String layout) {
+        ensureInit();
+
+        Dialog dialog = new Dialog();
+        dialog.initOwner(window);
+        dialog.setTitle(title);
+        final FXMLLoader fxmlLoader = new FXMLLoader(R.getLayout(layout));
+        final Parent node;
+        try {
+            node = fxmlLoader.load();
+        } catch (IOException e) {
+            Lg.e(TAG, e);
+            return;
+        }
+
+        dialog.getDialogPane().setContent(node);
+        dialog.getDialogPane().getScene().getWindow().setOnCloseRequest(event -> Platform.exit());
+//        dialog.setOnCloseRequest(event -> Platform.exit());
+        dialog.show();
     }
 
     @UiThread
