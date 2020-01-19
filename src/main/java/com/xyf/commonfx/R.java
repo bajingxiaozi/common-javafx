@@ -1,5 +1,6 @@
 package com.xyf.commonfx;
 
+import io.reactivex.annotations.NonNull;
 import javafx.scene.image.Image;
 
 import javax.annotation.Nonnull;
@@ -16,7 +17,7 @@ public class R {
     }
 
     public static InputStream getDrawable(@Nonnull String name) {
-        return R.class.getClassLoader().getResourceAsStream("drawable/" + name);
+        return getResource("drawable", name);
     }
 
     @Nonnull
@@ -24,6 +25,16 @@ public class R {
         try (InputStream inputStream = getDrawable(name)) {
             return new Image(inputStream);
         }
+    }
+
+    @NonNull
+    public static InputStream getResource(@NonNull String type, @NonNull String name) {
+        return R.class.getClassLoader().getResourceAsStream(type + "/" + name);
+    }
+
+    @NonNull
+    public static InputStream getXml(@NonNull String name) {
+        return getResource("xml", name);
     }
 
     @Nonnull
