@@ -18,18 +18,3 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'com.github.bajingxiaozi:common:-SNAPSHOT'
 }
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            println("current directory: " + rootDir);
-            final File mavenDirectory = new File(rootDir.getParentFile(), "maven-repo").getAbsoluteFile();
-            println("maven directory: " + mavenDirectory)
-
-            repository(url: "file://" + mavenDirectory)
-            pom.version = "$project.version"
-            pom.artifactId = "$artifactId"
-            pom.groupId = "$project.group"
-        }
-    }
-}
